@@ -1,6 +1,6 @@
 # use this empty Dockerfile to build your assignment
 FROM node:6-alpine
-EXPOSE 3000
+EXPOSE 3000 2000
 RUN  apk add --no-cache tini
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
