@@ -8,8 +8,6 @@ spec:
   selector:
     matchLabels:
       app: jenkins-server
-  strategy:
-    type: Recreate    
   template:
     metadata:
       labels:
@@ -21,7 +19,8 @@ spec:
       serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
-          image: jamshidc/jchittan:jenkinscustom1.1
+          image: jenkins/jenkins:lts
+          
           resources:
             limits:
               memory: "20Gi"
