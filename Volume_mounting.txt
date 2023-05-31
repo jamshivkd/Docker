@@ -1,0 +1,4 @@
+There are two types of mounting for containers to store the data 
+ a. Volume mounts :  Create volume under docker folder and store data inside it. In this case just mention volume mount name in docker file for mounting 
+ b. Bind mounts   :   Location anywhere on the host file. In this case we have to  specify complete path along witn container run command or in docker file.
+ 
