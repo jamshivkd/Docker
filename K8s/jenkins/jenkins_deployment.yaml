@@ -15,13 +15,14 @@ spec:
       labels:
         app: jenkins-server
     spec:
+      hostname: jenkins-master1
       securityContext:
             fsGroup: 1000
             runAsUser: 1000
       serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
-          image: jamshidc/jchittan:jenkinscustom1.1
+          image: jamshidc/jchittan:jenkinscustom1.2
           resources:
             limits:
               memory: "20Gi"
