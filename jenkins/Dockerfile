@@ -1,7 +1,7 @@
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:2.401.1
 USER root
 SHELL ["/bin/bash", "-c"]
-RUN apt-get update && apt-get install -y python3 sudo vim pssh   unzip  libaio-dev python3-pip xvfb  wget exim4 mailutils python openssh-server
+RUN apt-get update && apt-get install -y python3 sudo vim pssh   unzip  libaio-dev python3-pip xvfb  wget exim4 mailutils python openssh-server git
 RUN pip3 install selenium robotframework
 RUN wget -qO - https://package.perforce.com/perforce.pubkey | sudo apt-key add -
 RUN mkdir -p  /etc/apt/sources.list.d
