@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: myapp1
+  name: myapp12
   labels:
     name: myapp
 spec:
   containers:
-  - name: myapp
+  - name: myapp1
     image: nginx 
     resources:
       limits:

@@ -15,11 +15,30 @@ spec:
         path: "/"
         backend:
           service:
-            name: jenkins-service
+            name: master1-jenkins-new-service
+            port: 
+              number: 8080
+
+  - host: "master2.storage-sqa.jenkins.akadevqa.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: master2-updated-service
             port: 
               number: 8080
   tls:
     - hosts:
       - "master1.storage-sqa.jenkins.akadevqa.com"
-      secretName: jenkins-secrets 
+      secretName: jenkins-secrets            
+    - hosts:
+      - "master2.storage-sqa.jenkins.akadevqa.com"
+      secretName: jenkins-secrets
+
+
+
+
+
 

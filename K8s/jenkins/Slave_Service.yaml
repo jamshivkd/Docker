@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-slave-ssh
+  namespace: devops-tools
+spec:
+  selector:
+    app: jenkins-slave
+  type: NodePort
+  ports:
+      - port: 22
+        targetPort: 22
+        

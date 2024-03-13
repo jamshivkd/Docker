@@ -1,0 +1,16 @@
+###############################################
+
+     Deployment Name  :  master2
+     service Name     : master2-service
+     Service App      : master2-app
+     Deployment name        : master2-deployment
+     Deployment app         : master2-app
+     volumes claimName: master2-volclaim
+
+echo ##############################################
+ Internal IP and port details 
+ddc-master2-service             NodePort   10.101.97.37     <none>        22:30289/TCP                  56d
+dna-master2-service             NodePort   10.106.78.112    <none>        22:30495/TCP                  56d
+infra-master2-service           NodePort   10.100.87.84     <none>        22:30058/TCP                  56d
+master2-service                 NodePort   10.101.70.72     <none>        8080:30220/TCP,22:32439/TCP   81d
+ns-master2-service              NodePort   10.109.58.192    <none>        22:31520/TCP                  56d

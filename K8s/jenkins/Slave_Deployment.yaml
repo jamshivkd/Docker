@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-slave
+spec:
+  selector:
+    matchLabels:
+      app: jenkins-slave
+  strategy:
+    type: Recreate      
+  template:
+    metadata:
+      labels:
+        app: jenkins-slave
+    spec:
+      hostname: ddc-slave1
+      containers:
+      - name: jenkins-slave
+        image: jamshidc/jchittan:jenkinsslave1.0
+        resources:
+          limits:
+            memory: "10Gi"
+            cpu: "5000m"
+
+        ports:
+        - containerPort: 22
+        command: [ "/bin/bash" ]
+        args: [ "-c",  "bash /home/scripts/install.sh;chown -R jenkinsuser:jenkinsuser /home/jenkinsuser;service ssh restart;tail -f /dev/null" ]
+        volumeMounts:
+        - name: pv-storage
+          mountPath: /home/jenkinsuser
+        - name: configmap-volume
+          mountPath: /home/scripts/
+        - name: configmap-volume
+          subPath: authorized_keys
+          mountPath: /home/jenkinsuser/.ssh/authorized_keys
+        - name: configmap-volume
+          subPath: authorized_root_keys
+          mountPath: /root/.ssh/authorized_keys
+
+      volumes:
+      - name: pv-storage
+        persistentVolumeClaim:
+          claimName: jenkins-pv-slave-claim
+      - name: configmap-volume
+        configMap:
+          name: config-ddc-slave
+

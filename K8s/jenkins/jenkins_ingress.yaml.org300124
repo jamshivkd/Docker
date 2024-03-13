@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jenkins-ingress
+  namespace: devops-tools
+  labels:
+    name: jenkins-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "master1.storage-sqa.jenkins.akadevqa.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: jenkins-service
+            port: 
+              number: 8080
+
+  - host: "master2.storage-sqa.jenkins.akadevqa.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: master2-new-service
+            port: 
+              number: 8080
+  tls:
+    - hosts:
+      - "master1.storage-sqa.jenkins.akadevqa.com"
+      secretName: jenkins-secrets            
+    - hosts:
+      - "master2.storage-sqa.jenkins.akadevqa.com"
+      secretName: jenkins-secrets
+
+
+
+
+
+

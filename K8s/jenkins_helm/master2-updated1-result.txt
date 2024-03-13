@@ -1,0 +1,12 @@
+###############################################
+
+     Deployment Name  :  master2-updated1
+     service Name     : master2-updated1-service
+     Service App      : master2-updated1-app
+     Deployment name        : master2-updated1-deployment
+     Deployment app         : master2-updated1-app
+     volumes claimName: master2-updated1-volclaim
+
+echo ##############################################
+ Internal IP and port details 
+master2-updated1-service        NodePort   10.109.222.92    <none>        8080:31267/TCP,22:32183/TCP   3m3s

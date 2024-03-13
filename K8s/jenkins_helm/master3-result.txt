@@ -1,0 +1,12 @@
+###############################################
+
+     Deployment Name  :  master3
+     service Name     : master3-service
+     Service App      : master3-app
+     Deployment name        : master3-deployment
+     Deployment app         : master3-app
+     volumes claimName: master3-volclaim
+
+echo ##############################################
+ Internal IP and port details 
+master3-service                 NodePort   10.98.109.136    <none>        8080:32089/TCP,22:31105/TCP   3m3s

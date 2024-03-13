@@ -1,0 +1,5 @@
+Host *
+    HostkeyAlgorithms +ssh-dss
+    StrictHostKeyChecking no
+    PubkeyAcceptedKeyTypes +ssh-rsa
+    

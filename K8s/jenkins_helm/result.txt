@@ -1,0 +1,12 @@
+###############################################
+
+     Deployment Name  :  ns-master1
+     service Name     : ns-master1-service
+     Service App      : ns-master1-app
+     Deployment name        : ns-master1-pod
+     Deployment app         : ns-master1-app
+     volumes claimName: ns-master1-volclaim
+
+echo ##############################################
+ Internal IP and port details 
+ns-master1-service              NodePort   10.107.5.225     <none>        22:31565/TCP                  3m3s

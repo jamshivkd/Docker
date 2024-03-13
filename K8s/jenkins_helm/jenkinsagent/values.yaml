@@ -1,0 +1,13 @@
+space:
+   namespace: devops-tools     
+service:
+   name: jenkinsslave1-port
+   app:  jenkinssetup1
+pods:
+   name: jenkins-slave2     
+   app: jenkinssetup1
+volumes:
+  claimName: slave1-host-pvc
+
+host:
+  name: jenkins-slave12

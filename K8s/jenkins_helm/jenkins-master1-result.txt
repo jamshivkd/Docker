@@ -1,0 +1,12 @@
+###############################################
+
+     Deployment Name  :  jenkins-master1
+     service Name     : jenkins-master1-service
+     Service App      : jenkins-master1-app
+     Deployment name        : jenkins-master1-deployment
+     Deployment app         : jenkins-master1-app
+     volumes claimName: jenkins-master1-volclaim
+
+echo ##############################################
+ Internal IP and port details 
+jenkins-master1-service         NodePort   10.100.105.177   <none>        8080:32476/TCP,22:31862/TCP   3m3s

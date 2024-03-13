@@ -1,0 +1,4 @@
+Host *
+    HostkeyAlgorithms +ssh-dss
+    StrictHostKeyChecking no
+    

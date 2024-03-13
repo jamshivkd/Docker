@@ -1,0 +1,12 @@
+###############################################
+
+     Deployment Name  :  master2-new
+     service Name     : master2-new-service
+     Service App      : master2-new-app
+     Deployment name        : master2-new-deployment
+     Deployment app         : master2-new-app
+     volumes claimName: master2-new-volclaim
+
+echo ##############################################
+ Internal IP and port details 
+master2-new-service             NodePort   10.100.55.145    <none>        8080:32240/TCP,22:32612/TCP   3m4s

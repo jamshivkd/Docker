@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.space.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.app }}
+  strategy:
+    type: Recreate    
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.app }}
+    spec:
+      hostname: {{ .Values.host.name }}
+      securityContext:
+            fsGroup: 1000
+            runAsUser: 1000
+      serviceAccountName: jenkins-admin
+      containers:
+        - name: jenkins
+          image: jamshidc/jchittan:jenkinscustom1.2
+          resources:
+            limits:
+              memory: "30Gi"
+              cpu: "10000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+          ports:
+            - name: httpport
+              containerPort: 8080
+            - name: jnlpport
+              containerPort: 50000
+            - name: sshport
+              containerPort: 22
+          livenessProbe:
+            httpGet:
+              path: "/login"
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 60
+            timeoutSeconds: 10
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: "/login"
+              port: 8080
+            initialDelaySeconds: 100
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+          volumeMounts:
+            - name: jenkins-data
+              mountPath: /var/jenkins_home
+            - name: configmap-volume
+              subPath: authorized_keys
+              mountPath: /var/jenkins_home/.ssh/authorized_keys
+            - name: configmap-volume
+              subPath: config
+              mountPath: /var/jenkins_home/.ssh/config
+            - name: nfs-vol
+              mountPath: "/home/backup"
+
+      volumes:
+        - name: jenkins-data
+          persistentVolumeClaim:
+              claimName: {{ .Values.volumes.claimName }} 
+        - name: configmap-volume
+          configMap:
+            name: {{ .Values.configmap.name }}
+        - name: nfs-vol
+          nfs:
+                  server: 198.18.90.26
+                  path: /home/jenkins_backup
